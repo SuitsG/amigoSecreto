@@ -1,0 +1,193 @@
+/* Variables */
+
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f0f0f0;
+    --text-color-1: rgba(242, 242, 242, 1);
+    --text-color-2: rgba(165, 165, 165, 1);
+    --font-family-1: "p22-morris-golden", sans-serif;
+    --font-family-2: "p22-morris-ornaments", sans-serif;
+    --font-family-3: "p22-morris-troy", sans-serif;
+    --background-color: rgba(12, 12, 12, 1);
+
+}
+
+
+/* Color Theme Swatches in Hex */
+.Gantry-1-hex {
+    color: #F2F2F2;
+}
+
+.Gantry-2-hex {
+    color: #A6A6A6;
+}
+
+.Gantry-3-hex {
+    color: #404040;
+}
+
+.Gantry-4-hex {
+    color: #262626;
+}
+
+.Gantry-5-hex {
+    color: #0D0D0D;
+}
+
+/* Color Theme Swatches in RGBA */
+.Gantry-1-rgba {
+    color: rgba(242, 242, 242, 1);
+}
+
+.Gantry-2-rgba {
+    color: rgba(165, 165, 165, 1);
+}
+
+.Gantry-3-rgba {
+    color: rgba(63, 63, 63, 1);
+}
+
+.Gantry-4-rgba {
+    color: rgba(38, 38, 38, 1);
+}
+
+.Gantry-5-rgba {
+    color: rgba(12, 12, 12, 1);
+}
+
+/* Color Theme Swatches in HSLA */
+.Gantry-1-hsla {
+    color: hsla(0, 0, 95, 1);
+}
+
+.Gantry-2-hsla {
+    color: hsla(0, 0, 65, 1);
+}
+
+.Gantry-3-hsla {
+    color: hsla(0, 0, 25, 1);
+}
+
+.Gantry-4-hsla {
+    color: hsla(0, 0, 15, 1);
+}
+
+.Gantry-5-hsla {
+    color: hsla(0, 0, 5, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family-3);
+
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+}
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 50;
+    font-style: normal;
+}
+
+.h1 {
+    color: var(--text-color-1);
+    padding: 2rem;
+}
+
+
+
+/* Main */
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.form-section label {
+    font-size: 1.9rem;
+}
+
+.form-section input {
+    font-family: var(--font-family-3);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+
+.form-section button {
+    font-family: var(--font-family-3);
+    font-size: 1.5rem;
+    padding: 0.1rem 0.2rem;
+    cursor: pointer;
+}
+
+/* Participants Section */
+
+.participants-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.participants-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p {
+    color: var(--text-color-2);
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+
+
+.button {
+    font-family: var(--font-family-3);
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.error-message {
+    display: none;
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}

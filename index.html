@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/zgk2iax.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1 class="h1">Amigo Secreto</h1>
+    </header>
+    <main class="main"> 
+        <section class="form-section">
+        <label for="participant-name">Nombre del Participante:</label>
+        <input type="text" id="participant-name" name="participant-name" placeholder="Ingresa el nombre" required>
+        <div class="error-message" id="error-message"></div>
+        <button type="button" onclick="addParticipant()">Agregar Participante</button>
+        </section>
+        <section class="participants-section">
+            <h2>Lista de Participantes</h2>
+            <ul id="participants-list"></ul>
+            <div class="button">
+                <button class="button">Iniciar Sorteo</button>
+                <button class="button" onclick="clearParticipantsList()">Limpiar Lista</button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p> Gracias por participar!</p>
+    </footer>
+</body>
+</html>
