@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Amigo Secreto</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://use.typekit.net/zgk2iax.css">
-    <script src="app.js"></script>
 </head>
+
 <body>
     <header class="header">
-        <h1 class="h1">Amigo Secreto</h1>
+        <h1>Amigo Secreto</h1>
+        <p>¡Bienvenido a la app de Amigo Secreto!</p>
     </header>
-    <main class="main"> 
-        <section class="form-section">
-        <label for="participant-name">Nombre del Participante:</label>
-        <input type="text" id="participant-name" name="participant-name" placeholder="Ingresa el nombre" required>
-        <div class="error-message" id="error-message"></div>
-        <button type="button" onclick="addParticipant()">Agregar Participante</button>
-        </section>
-        <section class="participants-section">
-            <h2>Lista de Participantes</h2>
-            <ul id="participants-list"></ul>
-            <div class="button">
-                <button class="button">Iniciar Sorteo</button>
-                <button class="button" onclick="clearParticipantsList()">Limpiar Lista</button>
+    <main class="main">
+        <form id="amigoSecreto">
+            <label for="nombre">Agregar Participante:</label>
+            <input type="text" name="nombre" id="nombre" />
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="listaParticipantes"></ul>
+        <button id="sorteo">Iniciar Sorteo</button>
+
+        <!-- Modal de resultado (inicialmente oculto) -->
+        <div id="resultadoModal" class="modal">
+            <div class="modal-content">
+                <p id="amigoTexto"></p>
+                <div class="modal-buttons">
+                    <button id="btn-reintentar">Volver a sortear</button>
+                    <button id="btn-siguiente">Siguiente</button>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
-    <footer class="footer">
-        <p> Gracias por participar!</p>
+    <footer>
+        <p>Amigo Secreto App</p>
     </footer>
+
+    <script src="app.js"></script>
 </body>
+
 </html>
