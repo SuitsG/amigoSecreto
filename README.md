@@ -14,7 +14,7 @@ Una aplicación web simple y elegante para organizar sorteos de amigo secreto. P
 
 ## 🚀 Demo
 
-![Amigo Secreto Preview](https://via.placeholder.com/600x400/0D0D0D/F2F2F2?text=Amigo+Secreto+App)
+![Amigo Secreto Preview](https://suitsg.github.io/amigoSecreto/)
 
 ## 📋 Cómo usar
 
