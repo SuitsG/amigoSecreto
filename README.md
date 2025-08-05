@@ -44,6 +44,10 @@ La aplicación cuenta con tres fases principales:
 - **JavaScript ES6+**: Lógica de la aplicación con programación orientada a objetos
 - **Google Fonts**: Tipografía personalizada (Basic Sans)
 
+## 🌐 Enlace al Proyecto
+
+Puedes acceder a la aplicación aquí: [https://suitsg.github.io/amigoSecreto/](https://suitsg.github.io/amigoSecreto/)
+
 ## 🚀 Instalación
 
 1. **Clona el repositorio**:
@@ -194,3 +198,7 @@ Si tienes preguntas o encuentras algún problema, por favor abre un [issue](http
 ---
 
 *Hecho con ❤️ para hacer más divertidos los intercambios de regalos*
+
+## 🚧 En Desarrollo
+
+![En desarrollo](./assets/en-desarrollo.png)
