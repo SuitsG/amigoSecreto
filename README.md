@@ -201,4 +201,4 @@ Si tienes preguntas o encuentras algún problema, por favor abre un [issue](http
 
 ## 🚧 En Desarrollo
 
-![En desarrollo](./assets/en-desarrollo.png)
+![En desarrollo](./en-desarrollo.png)
