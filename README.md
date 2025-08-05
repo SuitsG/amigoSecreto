@@ -1,116 +1,163 @@
-# 🎁 Amigo Secreto
+# 🎁 Amigo Secreto (Secret Santa)
 
-Una aplicación web simple y elegante para organizar sorteos de amigo secreto. Permite agregar participantes, mantener la lista guardada en el navegador y realizar sorteos de manera fácil y divertida.
+Una aplicación web interactiva para organizar sorteos de Amigo Secreto de manera fácil y divertida.
+
+## 📋 Tabla de Contenidos
+
+- [Descripción](#descripción)
+- [Características](#características)
+- [Demo](#demo)
+- [Tecnologías](#tecnologías)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Funcionalidades](#funcionalidades)
+- [Contribución](#contribución)
+- [Licencia](#licencia)
+
+## 📖 Descripción
+
+**Amigo Secreto** es una aplicación web moderna que permite organizar sorteos de intercambio de regalos de forma digital. Los participantes pueden agregarse a la lista y la aplicación se encarga de realizar el sorteo de manera aleatoria, asegurando que cada persona tenga asignado un amigo secreto único.
 
 ## ✨ Características
 
-- **Agregar participantes**: Añade nombres de participantes de forma sencilla
-- **Validación de datos**: Evita nombres duplicados y campos vacíos
-- **Persistencia de datos**: Los participantes se guardan en el navegador usando localStorage
-- **Interfaz intuitiva**: Diseño limpio y fácil de usar
-- **Responsive**: Se adapta a diferentes tamaños de pantalla
-- **Mensajes de error**: Feedback visual cuando hay errores
-- **Soporte para teclado**: Agrega participantes presionando Enter
+- 🎯 **Sorteo Aleatorio**: Algoritmo que garantiza asignaciones únicas y aleatorias
+- 🔄 **Reintento Permitido**: Cada participante tiene una oportunidad de volver a sortear
+- 👥 **Gestión de Participantes**: Agregar y eliminar participantes de forma dinámica
+- 📱 **Responsive Design**: Interfaz adaptable a diferentes dispositivos
+- 🎨 **UI Moderna**: Diseño limpio y atractivo con animaciones suaves
+- 🚫 **Validación de Duplicados**: Previene la adición de nombres duplicados
+- 💫 **Experiencia Interactiva**: Modal para mostrar resultados de forma elegante
 
-## 🚀 Demo
+## 🖼️ Demo
 
-![Amigo Secreto Preview](https://suitsg.github.io/amigoSecreto/)
+La aplicación cuenta con tres fases principales:
 
-## 📋 Cómo usar
+1. **Agregar Participantes**: Formulario para registrar a los participantes
+2. **Proceso de Sorteo**: Sorteo individual con opción de reintento
+3. **Finalización**: Mensaje de celebración al completar el sorteo
 
-1. **Agregar participantes**: 
-   - Escribe el nombre en el campo de texto
-   - Presiona "Agregar Participante" o Enter
-   - El nombre aparecerá en la lista
+## 🛠️ Tecnologías
 
-2. **Gestionar la lista**:
-   - Los participantes se guardan automáticamente
-   - Usa "Limpiar Lista" para empezar de nuevo
-   - La lista se mantiene aunque recargues la página
+- **HTML5**: Estructura semántica y accesible
+- **CSS3**: Estilos modernos con variables CSS y Flexbox/Grid
+- **JavaScript ES6+**: Lógica de la aplicación con programación orientada a objetos
+- **Google Fonts**: Tipografía personalizada (Basic Sans)
 
-3. **Realizar sorteo**:
-   - *(Funcionalidad próximamente)*
-
-## 🛠️ Tecnologías utilizadas
-
-- **HTML5**: Estructura de la aplicación
-- **CSS3**: Estilos y diseño responsive
-- **JavaScript ES6**: Lógica de la aplicación
-- **localStorage**: Persistencia de datos
-- **Fuentes**: P22 Morris (Golden, Troy, Ornaments)
-
-## 📁 Estructura del proyecto
-
-```
-amigo-secreto/
-│
-├── index.html          # Página principal
-├── styles.css          # Estilos de la aplicación
-├── app.js             # Lógica JavaScript
-└── README.md          # Documentación
-```
-
-## 🎨 Paleta de colores
-
-- **Fondo**: `#0D0D0D` (Negro oscuro)
-- **Texto principal**: `#F2F2F2` (Blanco hueso)
-- **Texto secundario**: `#A6A6A6` (Gris claro)
-- **Secciones**: `#F0F0F0` (Gris muy claro)
-- **Errores**: `#FF0000` (Rojo)
-
-## 🚀 Instalación y uso
+## 🚀 Instalación
 
 1. **Clona el repositorio**:
    ```bash
    git clone https://github.com/SuitsG/amigoSecreto.git
    ```
 
-2. **Navega al directorio**:
+2. **Navega al directorio del proyecto**:
    ```bash
    cd amigoSecreto
    ```
 
-3. **Abre en tu navegador**:
-   - Abre `index.html` directamente en tu navegador
-   - O usa un servidor local como Live Server
+3. **Abre el archivo `index.html` en tu navegador**:
+   ```bash
+   # En Windows
+   start index.html
+   
+   # En macOS
+   open index.html
+   
+   # En Linux
+   xdg-open index.html
+   ```
 
-## 🌟 Características técnicas
+   O simplemente arrastra el archivo `index.html` a tu navegador web.
 
-- **Validación en tiempo real**: Los errores se limpian mientras escribes
-- **Manejo de eventos**: Soporte para click y teclado
-- **Almacenamiento local**: Los datos persisten entre sesiones
-- **Código limpio**: Funciones modulares y bien documentadas
-- **Responsive design**: Se adapta a móviles y desktop
+## 📖 Uso
+
+### Paso 1: Agregar Participantes
+1. Escribe el nombre de un participante en el campo de texto
+2. Haz clic en "Agregar" o presiona Enter
+3. Repite el proceso para todos los participantes
+4. Puedes eliminar participantes haciendo clic en "Quitar"
+
+### Paso 2: Iniciar el Juego
+1. Cuando tengas todos los participantes, haz clic en "Iniciar Juego"
+2. Se mostrará la pantalla de sorteo con las reglas
+
+### Paso 3: Realizar el Sorteo
+1. Haz clic en "Iniciar Sorteo"
+2. Aparecerá un modal mostrando el amigo secreto asignado
+3. Cada participante tiene la opción de "Volver a sortear" (solo una vez)
+4. Haz clic en "Siguiente" para continuar con el próximo participante
+
+### Paso 4: Finalización
+1. Cuando todos los participantes hayan realizado su sorteo, aparecerá un mensaje de celebración
+2. Puedes reiniciar el juego para realizar un nuevo sorteo
+
+## 📁 Estructura del Proyecto
+
+```
+amigo-secreto/
+│
+├── index.html          # Página principal
+├── styles.css          # Estilos de la aplicación
+├── app.js             # Lógica de la aplicación
+└── README.md          # Documentación del proyecto
+```
 
 ## 🔧 Funcionalidades
 
-### Implementadas ✅
-- [x] Agregar participantes
-- [x] Validación de nombres duplicados
-- [x] Validación de campos vacíos
-- [x] Persistencia con localStorage
-- [x] Limpiar lista completa
-- [x] Mensajes de error visuales
-- [x] Soporte para Enter
+### Clases Principales
 
-### Por implementar 🚧
-- [ ] Función de sorteo
-- [ ] Mostrar resultados del sorteo
-- [ ] Exportar lista de participantes
-- [ ] Eliminar participantes individuales
-- [ ] Configuración de sorteo (restricciones)
+#### `Participante`
+- Representa a cada participante del juego
+- Propiedades: `nombre`, `amigoSecreto`
 
-## 👨‍💻 Autor
+#### `JuegoAmigoSecreto`
+- Gestiona la lista de participantes
+- Métodos principales:
+  - `agregarParticipante(nombre)`: Agrega un nuevo participante
+  - `eliminarParticipante(nombre)`: Elimina un participante
+  - `extraerAleatorioYRemover(arr)`: Selecciona aleatoriamente y remueve elemento
+  - `reiniciarJuego()`: Reinicia el estado del juego
 
-**SuitsG** - [GitHub Profile](https://github.com/SuitsG)
+#### `ControladorSorteo`
+- Controla el flujo del sorteo
+- Gestiona la interfaz de usuario y los modales
+- Maneja los turnos y reintentos
 
-## 📄 Licencia
+### Características Técnicas
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+- **Prevención de Duplicados**: Utiliza `Set` para evitar nombres duplicados
+- **Algoritmo de Sorteo**: Selección aleatoria sin reemplazo
+- **Control de Estado**: Seguimiento de turnos y reintentos
+- **Interfaz Reactiva**: Actualización dinámica de la UI
 
-## 🤝 Contribuciones
+## 🎨 Personalización
 
-Las contribuciones son bienvenidas. Para cambios importantes:
+### Colores
+Los colores se pueden modificar en el archivo `styles.css` usando las variables CSS:
+
+```css
+:root {
+    --color-1: rgba(242, 242, 242, 1); /* Texto principal */
+    --color-2: rgba(191, 191, 191, 1); /* Texto secundario */
+    --color-3: rgba(63, 63, 63, 1);    /* Fondo medio */
+    --color-4: rgba(38, 38, 38, 1);    /* Fondo oscuro */
+    --color-5: rgba(12, 12, 12, 1);    /* Fondo principal */
+}
+```
+
+### Tipografía
+La fuente se puede cambiar modificando:
+
+```css
+:root {
+    --font-family: "basic-sans", sans-serif;
+}
+```
+
+## 🤝 Contribución
+
+Las contribuciones son bienvenidas. Para contribuir:
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -118,15 +165,32 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📝 Changelog
+### Ideas para Mejoras
 
-### v1.0.0 (2025-01-25)
-- ✨ Funcionalidad básica de agregar participantes
-- ✨ Validación de datos y mensajes de error
-- ✨ Persistencia con localStorage
-- 🎨 Diseño inicial con paleta de colores oscura
-- 📱 Diseño responsive básico
+- [ ] Agregar animaciones CSS más elaboradas
+- [ ] Implementar persistencia local (localStorage)
+- [ ] Añadir tema claro/oscuro
+- [ ] Exportar resultados en PDF
+- [ ] Agregar sonidos de notificación
+- [ ] Versión mobile-first mejorada
+- [ ] Internacionalización (i18n)
+
+## 📜 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👨‍💻 Autor
+
+**SuitsG** - [GitHub](https://github.com/SuitsG)
 
 ---
 
-⭐ ¡Dale una estrella si te gusta el proyecto!
+⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
+
+## 📞 Soporte
+
+Si tienes preguntas o encuentras algún problema, por favor abre un [issue](https://github.com/SuitsG/amigoSecreto/issues) en GitHub.
+
+---
+
+*Hecho con ❤️ para hacer más divertidos los intercambios de regalos*
