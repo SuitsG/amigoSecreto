@@ -135,7 +135,7 @@ class ControladorSorteo {
             reglasJuego.style.display = 'none';
             sorteo.style.display = 'none';
             mensajeFinal.style.display = 'block';
-            btnReiniciarJuego.style.display = 'block';
+            btnReiniciarJuego.style.display = 'flex';
         }
     }
 
@@ -145,6 +145,11 @@ class ControladorSorteo {
         this.turno = 0;
         this.contador = 0;
         this.btnSorteo.disabled = false;
+        inicioSorteo.style.display = 'none';
+        amigoSecreto.style.display = 'flex';
+        divParticipantes.style.display = 'flex';
+
+        renderParticipantes();
     }
 }
 
@@ -152,7 +157,7 @@ class ControladorSorteo {
 const juego = new JuegoAmigoSecreto();
 const controlador = new ControladorSorteo(juego);
 const btnIniciar = document.getElementById("iniciarJuego");
-const btnReiniciar = document.getElementById("reiniciarJuego");
+const btnReiniciar = document.getElementById("btnReiniciarJuego");
 
 // -------- UI de participantes --------
 const form = document.getElementById("amigoSecreto");
@@ -178,11 +183,16 @@ function renderParticipantes() {
 function iniciarJuego() {
     divParticipantes.style.display = 'none';
     form.style.display = 'none';
-    inicioSorteo.style.display = 'block';
-}
+    btnReiniciarJuego.style.display = 'none';
+    mensajeFinal.style.display = 'none';
 
-function reiniciarJuego() {
-    juego.reiniciarSorteo();
+
+    inicioSorteo.style.display = 'flex';
+    reglasJuegoTitulo.style.display = 'flex';
+    reglasJuego.style.display = 'flex';
+    sorteo.style.display = 'flex';
+
+
 }
 
 listaParticipantes.addEventListener("click", function (e) {
@@ -198,5 +208,5 @@ btnIniciar.addEventListener("click", function () {
 });
 
 btnReiniciar.addEventListener("click", function () {
-    reiniciarJuego();
+    controlador.reiniciarSorteo();
 });
