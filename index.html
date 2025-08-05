@@ -20,13 +20,22 @@
             <input type="text" name="nombre" id="nombre" />
             <button type="submit">Agregar</button>
         </form>
-        <ul id="listaParticipantes"></ul>
-        <button id="sorteo">Iniciar Sorteo</button>
+
+        <div class="listaParticipantes" id="divParticipantes">
+            <h2>Lista de Participantes</h2>
+            <ul id="listaParticipantes"></ul>
+            <button id="iniciarJuego">Iniciar Juego</button>
+        </div>
+
+
+        <div>
+            <button id="sorteo" class="sorteo"> Iniciar Sorteo</button>
+        </div>
 
         <!-- Modal de resultado (inicialmente oculto) -->
         <div id="resultadoModal" class="modal">
             <div class="modal-content">
-                <p id="amigoTexto"></p>
+                <p id="amigoTexto" class="amigoTexto"></p>
                 <div class="modal-buttons">
                     <button id="btn-reintentar">Volver a sortear</button>
                     <button id="btn-siguiente">Siguiente</button>
@@ -34,8 +43,8 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>Amigo Secreto App</p>
+    <footer class="footer">
+        <p>Gracias por participar</p>
     </footer>
 
     <script src="app.js"></script>
