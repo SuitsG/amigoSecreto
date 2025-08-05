@@ -195,6 +195,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 Si tienes preguntas o encuentras algún problema, por favor abre un [issue](https://github.com/SuitsG/amigoSecreto/issues) en GitHub.
 
+Próximamente publicaré un video en YouTube donde explicaré en detalle cómo funciona el proyecto.
+
 ---
 
 *Hecho con ❤️ para hacer más divertidos los intercambios de regalos*
