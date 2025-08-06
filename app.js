@@ -175,7 +175,7 @@ form.addEventListener("submit", function (e) {
 
 function renderParticipantes() {
     listaParticipantes.innerHTML = juego.participantes
-        .map(p => `<li>${p.nombre} <button class="quitar" data-nombre="${p.nombre}">Quitar</button></li>`)
+        .map(p => `<li>${p.nombre} <button class="quitar button" data-nombre="${p.nombre}">Quitar</button></li>`)
         .join('');
 }
 
@@ -191,8 +191,6 @@ function iniciarJuego() {
     reglasJuegoTitulo.style.display = 'flex';
     reglasJuego.style.display = 'flex';
     sorteo.style.display = 'flex';
-
-
 }
 
 listaParticipantes.addEventListener("click", function (e) {

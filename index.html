@@ -19,20 +19,20 @@
     </header>
     <main class="main">
         <form id="amigoSecreto">
-            <label for="nombre">Agregar Participante:</label>
+            <label for="nombre">Agregar Participante</label>
             <input type="text" name="nombre" id="nombre" />
-            <button type="submit">Agregar</button>
+            <button type="submit" class="button">Agregar</button>
         </form>
 
         <div class="listaParticipantes" id="divParticipantes">
             <h2>Lista de Participantes</h2>
             <ul id="listaParticipantes"></ul>
-            <button id="iniciarJuego">Iniciar Juego</button>
+            <button id="iniciarJuego" class="button">Iniciar Juego</button>
         </div>
 
 
         <div class="inicioSorteo" id="inicioSorteo">
-            <h3 id="reglasJuegoTitulo">Reglas del Juego</h3>
+            <h3 id="reglasJuegoTitulo" class="reglasJuegoTitulo">Reglas del Juego</h3>
             <ul id="reglasJuego">
                 <li>1. Cada participante solo tiene una sola oportunidad de volver a sortear en caso de que le toque a
                     si mismo.</li>
@@ -42,7 +42,7 @@
                 😊 ¡Esperamos que todos se hayan divertido y hayan disfrutado la sorpresa!<br>
                 🎁 ¡Feliz Amigo Secreto! 💌</p>
             <button id="btnReiniciarJuego" class="btnReiniciarJuego">Reiniciar Juego</button>
-            <button id="sorteo" class="sorteo"> Iniciar Sorteo</button>
+            <button id="sorteo" class="sorteo button"> Iniciar Sorteo</button>
         </div>
 
         <!-- Modal de resultado (inicialmente oculto) -->
@@ -50,8 +50,8 @@
             <div class="modal-content">
                 <p id="amigoTexto" class="amigoTexto"></p>
                 <div class="modal-buttons">
-                    <button id="btn-reintentar">Volver a sortear</button>
-                    <button id="btn-siguiente">Siguiente</button>
+                    <button id="btn-reintentar" class="button">Volver a sortear</button>
+                    <button id="btn-siguiente" class="button">Siguiente</button>
                 </div>
             </div>
         </div>
