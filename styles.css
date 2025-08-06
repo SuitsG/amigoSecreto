@@ -10,33 +10,6 @@
 
 }
 
-/* Color Theme Swatches in Hex */
-.Gantry-1-hex {
-    color: #F2F2F2;
-}
-
-.Gantry-2-hex {
-    color: #BFBFBF;
-}
-
-.Gantry-3-hex {
-    color: #404040;
-}
-
-.Gantry-4-hex {
-    color: #262626;
-}
-
-.Gantry-5-hex {
-    color: #0D0D0D;
-}
-
-
-
-
-
-
-
 
 * {
     box-sizing: border-box;
@@ -46,9 +19,7 @@
 
 body {
     background-color: var(--color-5);
-
     font-family: var(--font-family);
-
     display: grid;
     min-height: 100dvh;
     grid-template-rows: auto 1fr auto;
