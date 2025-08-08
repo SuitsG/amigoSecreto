@@ -6,8 +6,11 @@
     --color-3: rgba(63, 63, 63, 1);
     --color-4: rgba(38, 38, 38, 1);
     --color-5: rgba(12, 12, 12, 1);
-    --font-family: "basic-sans", sans-serif;
-
+    --font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    --font-title: 1.6rem;
+    --font-subtitle: 1.3rem;
+    --font-body: 0.95rem;
+    --font-input: 0.9rem;
 }
 
 
@@ -35,13 +38,13 @@ body {
 
 .header h1 {
     color: var(--color-1);
-    font-size: 2.5rem;
+    font-size: var(--font-title);
     margin: 0;
 }
 
 .header p {
     color: var(--color-2);
-    font-size: 1.2rem;
+    font-size: var(--font-subtitle);
     margin-top: 5px;
 }
 
@@ -50,122 +53,107 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    color: var(--text-color-1);
-    gap: 1rem;
 }
 
-.main form {
+.form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    padding: 30px;
     background-color: var(--color-4);
-    padding: 1rem;
-    border-radius: 8px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 0.5rem;
 }
 
-.main form label{
+.title {
     color: var(--color-1);
-    font-weight: bold;
-}
-
-.main form input{
-
-    border-radius: 0.2rem;
-    padding: 0.1rem;
-
-    border: none;
-    outline: none;
-}
-
-.main .listaParticipantes {
-    background-color: var(--color-4);
-    padding: 1rem;
-    border-radius: 8px;
-    /* width: 200px; */
-    max-width: auto;
-    max-height: 300px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.main .listaParticipantes h2 {
-    color: var(--color-1);
-    font-size: 1.1rem;
-}
-
-.main ul {
-    list-style: none;
-    padding: 0;
-    max-height: 200px;
-    overflow-y: scroll;
-}
-
-.main ul::-webkit-scrollbar {
-    /* Chrome, Safari y Edge */
-    display: none;
-}
-
-.main ul li {
-    font-family: var(--font-family-2);
-    font-size: 1.2rem;
-    color: var(--color-2);
+    font-size: var(--font-title);
     margin: 5px 0;
 
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-
-
-.inicioSorteo {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-
-    background-color: var(--color-3);
-    padding: 1rem;
-    border-radius: 8px;
-    width: 26rem;
-}
-
-.reglasJuegoTitulo {
-    color: var(--color-1);
-    font-size: 1.5rem;
-}
-
-
-#mensajeFinal {
-    display: none;
-    background-color: var(--color-3);
-    padding: 1rem;
-    border-radius: 8px;
     text-align: center;
 }
 
-.button {
-    font-family: var(--font-family-3);
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    padding: 0.2rem 0.5rem;
-    cursor: pointer;
-    outline: none;
+.p {
+    color: var(--color-1);
+    font-size: var(--font-body);
+}
+
+.input {
+    background-color: var(--color-5);
+    color: var(--color-2);
     border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: var(--font-input);
 }
 
-.button:hover {
-    background-color: var(--color-2);
-    color: var(--color-5);
-    transition-duration: 0.1s;
+.inicioSorteo {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    background-color: var(--color-4);
+    gap: 1rem;
+    border-radius: 0.5rem;
+
+    width: 100%;
+    max-width: 360px;
 }
 
+.modal {
+    display: none;
+}
+
+.listaParticipantes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-1);
+}
+
+.listaParticipantes li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid var(--color-4);
+    background-color: var(--color-5);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: var(--font-body);
+}
+
+
+
+/* Buttons*/
+.button {
+    color: var(--color-1);
+    background-color: var(--color-5);
+    border: 1px solid var(--color-4);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-family: var(--font-family);
+    cursor: pointer;
+    font-size: var(--font-body);
+}
+
+.button1 {
+    border: none;
+    background-color: transparent;
+    color: var(--color-2);
+    font-family: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/* Modal */
 /* Modal de resultado */
 .modal-content{
     display: flex;
@@ -193,7 +181,7 @@ body {
 }
 
 #resultadoModal .modal-content {
-    background: #fff;
+    background: var(--color-4);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -204,101 +192,65 @@ body {
 }
 
 .amigoTexto {
-    font-family: var(--font-family-2);
-    font-size: 1.5rem;
-    color: #0D0D0D;
+    font-size: var(--font-subtitle);
+    color: var(--color-1);
     margin-top: 20px;
-}
-
-
-/* Footer */
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 1rem 0;
-    background: var(--background-color);
-}
-
-.footer p {
-    font-family: var(--font-family-3);
-    color: var(--color-2);
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-
-
-
-/*  btn Reiniciar Juego */
-
-.btnReiniciarJuego {
-    display: none;
-    appearance: none;
-    background-color: #fafbfc;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow:
-        rgba(27, 31, 35, 0.04) 0 1px 0,
-        rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #24292e;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-}
-
-.btnReiniciarJuego:hover {
-    background-color: #f3f4f6;
-    text-decoration: none;
-    transition-duration: 0.1s;
-}
-
-.btnReiniciarJuego:disabled {
-    background-color: #fafbfc;
-    border-color: rgba(27, 31, 35, 0.15);
-    color: #959da5;
-    cursor: default;
-}
-
-.btnReiniciarJuego:active {
-    background-color: #edeff2;
-    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-    transition: none 0s;
-}
-
-.btnReiniciarJuego:focus {
-    outline: 1px transparent;
-}
-
-.btnReiniciarJuego:before {
-    display: none;
+    font-weight: bold;
 }
 
 
 
 
 
-/* Responsive */
-@media (max-width: 600px) {
 
 
-    /* Main */
-    .main{
-        flex-direction: column;
-        align-items: center;
+
+
+/* Responsive  */
+
+@media (min-width: 481px) {
+    :root{
+        --font-title: 2rem;
+        --font-subtitle: 1.6rem;
+        --font-body: 1rem;
+        --font-input: 0.95rem;
     }
 
+    .inicioSorteo {
+        width: 90%;
+        max-width: 720px;
+    }
 }
+
+
+@media (min-width: 769px) {
+    :root{
+        --font-title: 2.5rem;
+        --font-subtitle: 2rem;
+        --font-body: 1.05rem;
+        --font-input: 1rem;
+    }
+
+    .inicioSorteo {
+        width: 55%;
+        max-width: 1100px;
+    }
+}
+
+@media (min-width: 1367px) {
+    :root{
+        --font-title: 3rem;
+        --font-subtitle: 2.2rem;
+        --font-body: 1.1rem;
+        --font-input: 1.05rem;
+    }
+
+    .inicioSorteo {
+        width: 80%;
+        max-width: 1400px;
+    }
+}
+
+
+
+

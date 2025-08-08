@@ -74,7 +74,9 @@ class ControladorSorteo {
 
     abrirModal(amigo) {
         this.lastAmigo = amigo;
-        this.amigoTexto.innerHTML = `Tu amigo secreto es: <br> ${amigo.nombre}`;
+        this.amigoTexto.innerHTML = `Tu amigo secreto es: <br>
+         <strong style="color:#4ecdc4; font-size:1.2em;">${amigo.nombre}</strong>
+        `;
 
         if (this.contador === 0) {
             this.btnReintentar.style.display = 'inline-block';
@@ -100,7 +102,6 @@ class ControladorSorteo {
         }
 
         if (this.restantes.length === 0) {
-            alert('El sorteo ha finalizado.');
             this.btnSorteo.disabled = true;
             return;
         }
@@ -147,7 +148,7 @@ class ControladorSorteo {
         this.btnSorteo.disabled = false;
         inicioSorteo.style.display = 'none';
         amigoSecreto.style.display = 'flex';
-        divParticipantes.style.display = 'flex';
+    
 
         renderParticipantes();
     }
@@ -175,13 +176,12 @@ form.addEventListener("submit", function (e) {
 
 function renderParticipantes() {
     listaParticipantes.innerHTML = juego.participantes
-        .map(p => `<li>${p.nombre} <button class="quitar button" data-nombre="${p.nombre}">Quitar</button></li>`)
+        .map(p => `<li>${p.nombre} <button class="quitar button1" data-nombre="${p.nombre}">Remove</button></li>`)
         .join('');
 }
 
 /* function ocultar donde oculta la lista de participantes y el formulario */
 function iniciarJuego() {
-    divParticipantes.style.display = 'none';
     form.style.display = 'none';
     btnReiniciarJuego.style.display = 'none';
     mensajeFinal.style.display = 'none';
