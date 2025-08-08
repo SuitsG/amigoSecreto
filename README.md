@@ -10,8 +10,10 @@ Una aplicación web interactiva para organizar sorteos de Amigo Secreto de maner
 - [Tecnologías](#tecnologías)
 - [Instalación](#instalación)
 - [Uso](#uso)
+- [Persistencia (localStorage)](#persistencia-localstorage)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Funcionalidades](#funcionalidades)
+- [Notas de Privacidad](#notas-de-privacidad)
 - [Contribución](#contribución)
 - [Licencia](#licencia)
 
@@ -21,186 +23,156 @@ Una aplicación web interactiva para organizar sorteos de Amigo Secreto de maner
 
 ## ✨ Características
 
-- 🎯 **Sorteo Aleatorio**: Algoritmo que garantiza asignaciones únicas y aleatorias
-- 🔄 **Reintento Permitido**: Cada participante tiene una oportunidad de volver a sortear
-- 👥 **Gestión de Participantes**: Agregar y eliminar participantes de forma dinámica
-- 📱 **Responsive Design**: Interfaz adaptable a diferentes dispositivos
-- 🎨 **UI Moderna**: Diseño limpio y atractivo con animaciones suaves
-- 🚫 **Validación de Duplicados**: Previene la adición de nombres duplicados
-- 💫 **Experiencia Interactiva**: Modal para mostrar resultados de forma elegante
+- 🎯 **Sorteo Aleatorio**: Asignaciones únicas y aleatorias sin reemplazo
+- 🔄 **Reintento Controlado**: Cada participante puede volver a sortear solo una vez en su turno
+- 👥 **Gestión de Participantes**: Agregar y eliminar dinámicamente
+- 💾 **Persistencia Local (localStorage)**: Se guarda la lista, asignaciones, turno y pendientes
+- 🚫 **Validación de Duplicados**: No permite nombres repetidos
+- 🧠 **Reanudación del Juego**: Tras recargar, continúa donde quedó
+- 📱 **Responsive Design**: Adaptable a móviles y escritorio
+- 🎨 **UI Moderna**: Diseño limpio con modal de resultado
+- ♻️ **Reinicio Seguro**: Limpia estado y almacenamiento
 
 ## 🖼️ Demo
 
-La aplicación cuenta con tres fases principales:
-
-1. **Agregar Participantes**: Formulario para registrar a los participantes
-2. **Proceso de Sorteo**: Sorteo individual con opción de reintento
-3. **Finalización**: Mensaje de celebración al completar el sorteo
+Fases:
+1. Agregar Participantes
+2. Sorteo secuencial (con opción de reintento por turno)
+3. Mensaje final de cierre
 
 ## 🛠️ Tecnologías
 
-- **HTML5**: Estructura semántica y accesible
-- **CSS3**: Estilos modernos con variables CSS y Flexbox/Grid
-- **JavaScript ES6+**: Lógica de la aplicación con programación orientada a objetos
-- **Google Fonts**: Tipografía personalizada (Basic Sans)
+- HTML5
+- CSS3
+- JavaScript (ES6+ / POO)
+- Google Fonts (Inter)
+- localStorage (persistencia)
 
 ## 🌐 Enlace al Proyecto
 
-Puedes acceder a la aplicación aquí: [https://suitsg.github.io/amigoSecreto/](https://suitsg.github.io/amigoSecreto/)
+https://suitsg.github.io/amigoSecreto/
 
 ## 🚀 Instalación
 
-1. **Clona el repositorio**:
-   ```bash
-   git clone https://github.com/SuitsG/amigoSecreto.git
-   ```
-
-2. **Navega al directorio del proyecto**:
-   ```bash
-   cd amigoSecreto
-   ```
-
-3. **Abre el archivo `index.html` en tu navegador**:
-   ```bash
-   # En Windows
-   start index.html
-   
-   # En macOS
-   open index.html
-   
-   # En Linux
-   xdg-open index.html
-   ```
-
-   O simplemente arrastra el archivo `index.html` a tu navegador web.
+1. Clonar:
+```bash
+git clone https://github.com/SuitsG/amigoSecreto.git
+cd amigoSecreto
+```
+2. Abrir:
+```bash
+start index.html   # Windows
+open index.html    # macOS
+xdg-open index.html # Linux
+```
 
 ## 📖 Uso
 
-### Paso 1: Agregar Participantes
-1. Escribe el nombre de un participante en el campo de texto
-2. Haz clic en "Agregar" o presiona Enter
-3. Repite el proceso para todos los participantes
-4. Puedes eliminar participantes haciendo clic en "Quitar"
+1. Agregar nombres (no se permiten duplicados ni vacíos)
+2. Iniciar Juego
+3. Presionar "Iniciar Sorteo" por participante
+4. (Opcional) Reintentar una vez
+5. Avanzar con "Siguiente"
+6. Al finalizar, puedes reiniciar
 
-### Paso 2: Iniciar el Juego
-1. Cuando tengas todos los participantes, haz clic en "Iniciar Juego"
-2. Se mostrará la pantalla de sorteo con las reglas
+## 💾 Persistencia (localStorage)
 
-### Paso 3: Realizar el Sorteo
-1. Haz clic en "Iniciar Sorteo"
-2. Aparecerá un modal mostrando el amigo secreto asignado
-3. Cada participante tiene la opción de "Volver a sortear" (solo una vez)
-4. Haz clic en "Siguiente" para continuar con el próximo participante
+La aplicación guarda automáticamente:
+- Lista de participantes
+- Asignaciones realizadas
+- Turno actual
+- Participantes restantes por asignar
 
-### Paso 4: Finalización
-1. Cuando todos los participantes hayan realizado su sorteo, aparecerá un mensaje de celebración
-2. Puedes reiniciar el juego para realizar un nuevo sorteo
+Al recargar la página:
+- Se reconstruye la lista
+- Se restauran las asignaciones previas
+- Continúa el turno donde estaba
+- Si el sorteo terminó, se deshabilita el botón
+
+Para limpiar manualmente:
+```js
+localStorage.removeItem('amigoSecreto_participantes');
+localStorage.removeItem('amigoSecreto_estado');
+```
+
+El botón "Reiniciar Juego" también elimina estos datos.
 
 ## 📁 Estructura del Proyecto
 
 ```
 amigo-secreto/
-│
-├── index.html          # Página principal
-├── styles.css          # Estilos de la aplicación
-├── app.js             # Lógica de la aplicación
-└── README.md          # Documentación del proyecto
+├── index.html
+├── styles.css
+├── app.js
+└── README.md
 ```
 
 ## 🔧 Funcionalidades
 
-### Clases Principales
+### Clases
 
-#### `Participante`
-- Representa a cada participante del juego
-- Propiedades: `nombre`, `amigoSecreto`
+#### Participante
+Propiedades: nombre, amigoSecreto
 
-#### `JuegoAmigoSecreto`
-- Gestiona la lista de participantes
-- Métodos principales:
-  - `agregarParticipante(nombre)`: Agrega un nuevo participante
-  - `eliminarParticipante(nombre)`: Elimina un participante
-  - `extraerAleatorioYRemover(arr)`: Selecciona aleatoriamente y remueve elemento
-  - `reiniciarJuego()`: Reinicia el estado del juego
+#### JuegoAmigoSecreto
+- agregarParticipante(nombre)
+- eliminarParticipante(nombre)
+- reiniciarJuego()
+- guardarEnStorage() / cargarDeStorage()
+- extraerAleatorioYRemover(arr)
 
-#### `ControladorSorteo`
-- Controla el flujo del sorteo
-- Gestiona la interfaz de usuario y los modales
-- Maneja los turnos y reintentos
+#### ControladorSorteo
+- sortear()
+- reintentar()
+- siguiente()
+- guardarEstado() / cargarEstado()
+- reiniciarSorteo()
 
-### Características Técnicas
+### Persistencia Técnica
+- Claves: `amigoSecreto_participantes`, `amigoSecreto_estado`
+- Estado serializado: turno, restantes, asignaciones
+- Invalidación automática al modificar la lista
 
-- **Prevención de Duplicados**: Utiliza `Set` para evitar nombres duplicados
-- **Algoritmo de Sorteo**: Selección aleatoria sin reemplazo
-- **Control de Estado**: Seguimiento de turnos y reintentos
-- **Interfaz Reactiva**: Actualización dinámica de la UI
+## 🛡️ Notas de Privacidad
 
-## 🎨 Personalización
-
-### Colores
-Los colores se pueden modificar en el archivo `styles.css` usando las variables CSS:
-
-```css
-:root {
-    --color-1: rgba(242, 242, 242, 1); /* Texto principal */
-    --color-2: rgba(191, 191, 191, 1); /* Texto secundario */
-    --color-3: rgba(63, 63, 63, 1);    /* Fondo medio */
-    --color-4: rgba(38, 38, 38, 1);    /* Fondo oscuro */
-    --color-5: rgba(12, 12, 12, 1);    /* Fondo principal */
-}
-```
-
-### Tipografía
-La fuente se puede cambiar modificando:
-
-```css
-:root {
-    --font-family: "basic-sans", sans-serif;
-}
-```
+- Las asignaciones quedan visibles en `localStorage` del navegador
+- No se envían datos a servidores
+- Para ocultar resultados tras el sorteo, limpiar almacenamiento
 
 ## 🤝 Contribución
 
-Las contribuciones son bienvenidas. Para contribuir:
+1. Fork
+2. Rama: `feature/NuevaFeature`
+3. Commit
+4. Push
+5. Pull Request
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+### Ideas Futuras
 
-### Ideas para Mejoras
-
-- [ ] Agregar animaciones CSS más elaboradas
-- [ ] Implementar persistencia local (localStorage)
-- [ ] Añadir tema claro/oscuro
-- [ ] Exportar resultados en PDF
-- [ ] Agregar sonidos de notificación
-- [ ] Versión mobile-first mejorada
+- [ ] Tema claro/oscuro
+- [ ] Exportar resultados (PDF / CSV)
+- [ ] Animaciones avanzadas
+- [ ] Sonidos opcionales
+- [ ] Mejor experiencia mobile-first
 - [ ] Internacionalización (i18n)
+- [ ] Evitar auto-asignación (regla configurable)
 
 ## 📜 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+MIT
 
 ## 👨‍💻 Autor
 
-**SuitsG** - [GitHub](https://github.com/SuitsG)
+**SuitsG** - https://github.com/SuitsG
 
----
-
-⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
+⭐ Si te gusta, deja una estrella.
 
 ## 📞 Soporte
 
-Si tienes preguntas o encuentras algún problema, por favor abre un [issue](https://github.com/SuitsG/amigoSecreto/issues) en GitHub.
-
-Próximamente publicaré un video en YouTube donde explicaré en detalle cómo funciona el proyecto.
+Abre un issue: https://github.com/SuitsG/amigoSecreto/issues
 
 ---
 
-*Hecho con ❤️ para hacer más divertidos los intercambios de regalos*
+Hecho con ❤️ para hacer más divertidos los intercambios de regalos.
 
-## 🚧 En Desarrollo
-
-![En desarrollo](./en-desarrollo.png)
+## 🚧

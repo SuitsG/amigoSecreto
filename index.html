@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amigo Secreto</title>
+    <title>Secret Friend</title>
     <link rel="stylesheet" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon"
@@ -14,12 +14,12 @@
 
 <body>
     <header class="header">
-        <h1>Amigo Secreto</h1>
-        <p>¡Bienvenido a la app de Amigo Secreto!</p>
+        <h1>Secret Friend</h1>
+        <p>Welcome to the Secret Friend app!</p>
     </header>
     <main class="main">
         <form class="form" id="amigoSecreto">
-            <h3 class="title">Amigo Secreto</h3>
+            <h3 class="title">Secret Friend</h3>
             <label for="nombre" class="p">Add Participant</label>
             <div>
                 <input type="text" name="nombre" id="nombre" class="input" placeholder="Name" />
@@ -30,39 +30,31 @@
             <button id="iniciarJuego" class="button">Start Game</button>
         </form>
 
-
-
-
         <div class="inicioSorteo" id="inicioSorteo">
-            <h3 id="reglasJuegoTitulo" class="title">Reglas del Juego</h3>
+            <h3 id="reglasJuegoTitulo" class="title">Game Rules</h3>
+            <p class="p" id="reglasJuego">1. Each participant has only one chance to re-draw if they pick themselves.
+            </p>
 
-            <p class="p" id="reglasJuego">1. Cada participante solo tiene una sola oportunidad de volver a sortear en caso de que le toque a
-                si mismo.</p>
-
-
-            <p id="mensajeFinal" class="p">🎉 ¡El juego del Amigo Secreto ha terminado!<br>
-                😊 ¡Esperamos que todos se hayan divertido y hayan disfrutado la sorpresa!<br>
-                🎁 ¡Feliz Amigo Secreto! 💌</p>
-            <button id="btnReiniciarJuego" class="button">Reiniciar Juego</button>
-            <button id="sorteo" class="sorteo button"> Iniciar Sorteo</button>
+            <p id="mensajeFinal" class="p">🎉 The Secret Friend game has ended!<br>
+                😊 We hope everyone had fun and enjoyed the surprise!<br>
+                🎁 Happy Secret Friend! 💌</p>
+            <button id="btnReiniciarJuego" class="button">Reset Game</button>
+            <button id="sorteo" class="sorteo button">Start Draw</button>
         </div>
-
 
         <div id="resultadoModal" class="modal">
             <div class="modal-content">
                 <p id="amigoTexto" class="amigoTexto"></p>
                 <div class="modal-buttons">
-                    <button id="btn-reintentar" class="button">Volver a sortear</button>
-                    <button id="btn-siguiente" class="button">Siguiente</button>
+                    <button id="btn-reintentar" class="button">Re-draw</button>
+                    <button id="btn-siguiente" class="button">Next</button>
                 </div>
             </div>
         </div>
     </main>
     <footer class="footer">
-        <p>Gracias por participar</p>
+        <p>Thank you for participating</p>
     </footer>
-
-
     <script src="app.js"></script>
 </body>
 

@@ -1,4 +1,6 @@
 /* Practicando POO */
+const STORAGE_PARTICIPANTES = 'amigoSecreto_participantes';
+const STORAGE_ESTADO = 'amigoSecreto_estado';
 
 class Participante {
     constructor(nombre) {
@@ -20,15 +22,47 @@ class JuegoAmigoSecreto {
 
         this._nombres.add(clave);
         this.participantes.push(new Participante(nombre.trim()));
+        this.guardarEnStorage();
+        this._borrarEstado(); // cambiar participantes invalida estado de sorteo
     }
 
     eliminarParticipante(nombre) {
         this.participantes = this.participantes.filter(p => p.nombre !== nombre);
+        this._nombres = new Set(this.participantes.map(p => p.nombre.toLowerCase()));
+        this.guardarEnStorage();
+        this._borrarEstado();
     }
 
     reiniciarJuego() {
         this.participantes = [];
         this._nombres.clear();
+        localStorage.removeItem(STORAGE_PARTICIPANTES);
+        this._borrarEstado();
+    }
+
+    guardarEnStorage() {
+        const data = this.participantes.map(p => ({
+            nombre: p.nombre,
+            amigoSecreto: p.amigoSecreto ? p.amigoSecreto.nombre : null
+        }));
+        localStorage.setItem(STORAGE_PARTICIPANTES, JSON.stringify(data));
+    }
+
+    cargarDeStorage() {
+        const raw = localStorage.getItem(STORAGE_PARTICIPANTES);
+        if (!raw) return;
+        try {
+            const data = JSON.parse(raw);
+            this.participantes = data.map(d => new Participante(d.nombre));
+            this._nombres = new Set(this.participantes.map(p => p.nombre.toLowerCase()));
+            // asignaciones se restauran luego en controlador.cargarEstado()
+        } catch (e) {
+            console.warn('Error al cargar participantes:', e);
+        }
+    }
+
+    _borrarEstado() {
+        localStorage.removeItem(STORAGE_ESTADO);
     }
 
     // Extrae aleatoriamente un elemento del array y lo elimina de ese array
@@ -74,7 +108,7 @@ class ControladorSorteo {
 
     abrirModal(amigo) {
         this.lastAmigo = amigo;
-        this.amigoTexto.innerHTML = `Tu amigo secreto es: <br>
+        this.amigoTexto.innerHTML = `Your Secret Friend is: <br>
          <strong style="color:#4ecdc4; font-size:1.2em;">${amigo.nombre}</strong>
         `;
 
@@ -95,10 +129,9 @@ class ControladorSorteo {
     }
 
     sortear() {
-        if (this.turno === 0) {
+        if (this.turno === 0 && this.restantes.length === 0) {
             // inicializa cola clonando participantes
             this.restantes = [...this.juego.participantes];
-
         }
 
         if (this.restantes.length === 0) {
@@ -110,6 +143,8 @@ class ControladorSorteo {
         const actual = this.juego.participantes[this.turno];
         const amigo = this.juego.extraerAleatorioYRemover(this.restantes);
         actual.amigoSecreto = amigo;
+        this.juego.guardarEnStorage();
+        this.guardarEstado();
         this.abrirModal(amigo);
     }
 
@@ -121,6 +156,8 @@ class ControladorSorteo {
         }
         const nuevo = this.juego.extraerAleatorioYRemover(this.restantes);
         actual.amigoSecreto = nuevo;
+        this.juego.guardarEnStorage();
+        this.guardarEstado();
         this.cerrarModal();
         this.abrirModal(nuevo);
     }
@@ -129,6 +166,7 @@ class ControladorSorteo {
         this.cerrarModal();
         this.turno++;
         this.contador = 0;
+        this.guardarEstado();
         if (this.turno >= this.juego.participantes.length) {
             this.btnSorteo.disabled = true;
 
@@ -145,12 +183,63 @@ class ControladorSorteo {
         this.restantes = [];
         this.turno = 0;
         this.contador = 0;
+        this.lastAmigo = null;
         this.btnSorteo.disabled = false;
         inicioSorteo.style.display = 'none';
         amigoSecreto.style.display = 'flex';
-    
-
+        localStorage.removeItem(STORAGE_ESTADO);
         renderParticipantes();
+    }
+
+    guardarEstado() {
+        const estado = {
+            turno: this.turno,
+            restantes: this.restantes.map(p => p.nombre),
+            participantes: this.juego.participantes.map(p => ({
+                nombre: p.nombre,
+                amigoSecreto: p.amigoSecreto ? p.amigoSecreto.nombre : null
+            }))
+        };
+        localStorage.setItem(STORAGE_ESTADO, JSON.stringify(estado));
+    }
+
+    cargarEstado() {
+        const raw = localStorage.getItem(STORAGE_ESTADO);
+        if (!raw) return;
+        try {
+            const estado = JSON.parse(raw);
+            // Mapear participantes
+            const mapa = new Map(this.juego.participantes.map(p => [p.nombre, p]));
+            // Restaurar amigoSecreto
+            estado.participantes.forEach(ep => {
+                if (ep.amigoSecreto && mapa.has(ep.amigoSecreto) && mapa.has(ep.nombre)) {
+                    mapa.get(ep.nombre).amigoSecreto = mapa.get(ep.amigoSecreto);
+                }
+            });
+            // Turno y restantes
+            this.turno = estado.turno || 0;
+            const asignados = new Set(
+                this.juego.participantes
+                    .filter(p => p.amigoSecreto)
+                    .map(p => p.amigoSecreto.nombre)
+            );
+            if (estado.restantes && estado.restantes.length) {
+                // reconstruir desde estado guardado
+                this.restantes = estado.restantes
+                    .map(n => mapa.get(n))
+                    .filter(Boolean);
+            } else {
+                // fallback: calcular restantes como no asignados
+                this.restantes = this.juego.participantes
+                    .filter(p => !asignados.has(p.nombre));
+            }
+            // Deshabilitar sorteo si terminó
+            if (this.turno >= this.juego.participantes.length) {
+                this.btnSorteo.disabled = true;
+            }
+        } catch (e) {
+            console.warn('Error al cargar estado:', e);
+        }
     }
 }
 
@@ -207,4 +296,11 @@ btnIniciar.addEventListener("click", function () {
 
 btnReiniciar.addEventListener("click", function () {
     controlador.reiniciarSorteo();
+});
+
+// Carga inicial desde localStorage
+window.addEventListener('DOMContentLoaded', () => {
+    juego.cargarDeStorage();
+    renderParticipantes();
+    controlador.cargarEstado();
 });
