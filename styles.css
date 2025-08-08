@@ -68,7 +68,7 @@ body {
 .title {
     color: var(--color-1);
     font-size: var(--font-title);
-    margin: 5px 0;
+    margin: 0;
 
     text-align: center;
 }
@@ -113,6 +113,40 @@ body {
     padding: 0;
     margin: 0;
     color: var(--color-1);
+    overflow-y: auto;
+    max-height: 150px;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-3) transparent;
+    scroll-behavior: smooth;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.listaParticipantes::-webkit-scrollbar {
+    width: 8px;
+}
+
+.listaParticipantes::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, var(--color-5), var(--color-4));
+    border-radius: 4px;
+}
+
+.listaParticipantes::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-3), var(--color-2));
+    border-radius: 4px;
+    border: 1px solid var(--color-5);
+    box-shadow: 0 0 0 1px var(--color-4);
+    transition: background .3s, box-shadow .3s;
+}
+
+.listaParticipantes::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-2), var(--color-1));
+    box-shadow: 0 0 4px 0 rgba(255,255,255,0.3);
+}
+
+.listaParticipantes::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 .listaParticipantes li {
@@ -200,11 +234,16 @@ body {
 
 
 
+/* Footer */
+.footer {
+    padding: 10px 20px;
+    text-align: center;
+}
 
-
-
-
-
+.footer p {
+    color: var(--color-2);
+    font-size: var(--font-body);
+}
 
 /* Responsive  */
 
